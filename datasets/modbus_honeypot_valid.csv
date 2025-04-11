@@ -1,0 +1,26 @@
+id,ip,IsHoneypot,IsModbus,IsCloud,IPwhoisNetsDescription,OS,OSaccuracy,OpenPortNum,country,latitude,longitude,port,vendor,product_code,product_name,model_name,valid
+1,161.251.135.202,1,TRUE,TRUE,"DigitalOcean, LLC",Linux 2.6.32,96,1,United States,44.0486,-123.2197,502,,,,,1
+2,130.56.135.195,1,TRUE,TRUE,blueconnect,Citrix NetScaler load balancer,88,0,Poland,52.2394,21.0362,502,,,,,1
+3,140.90.40.37,1,TRUE,TRUE,"Telia Lietuva, AB",Comau C4G robot control unit,97,0,Republic of Lithuania,54.9,23.9,502,,,,,1
+4,211.135.19.16,1,TRUE,TRUE,Korea Telecom,,,0,Republic of Korea,35.5372,129.3167,502,,,,,1
+5,211.158.182.236,1,TRUE,TRUE,Korea Telecom,,,0,Republic of Korea,35.2753,128.6515,502,,,,,1
+6,1.132.189.103,1,TRUE,TRUE,Orange Mobile,Cisco 2600 router (IOS 11.3),94,0,Poland,53.378,20.2731,502,,,,,1
+7,1.132.189.107,1,TRUE,TRUE,Orange Mobile,,,0,Poland,53.378,20.2731,502,,,,,1
+8,1.132.189.106,1,TRUE,TRUE,Orange Mobile,F5 BIG-IP Edge Gateway,96,0,Poland,53.378,20.2731,502,,,,,1
+9,1.132.182.147,1,TRUE,TRUE,Orange Mobile,,,0,Poland,53.378,20.2731,502,,,,,1
+10,1.132.181.205,1,TRUE,TRUE,Orange Mobile,,,0,Poland,53.378,20.2731,502,,,,,1
+11,1.132.129.227,1,TRUE,TRUE,Orange Mobile,F5 BIG-IP Edge Gateway,96,0,Poland,51.6557,16.089,502,,,,,1
+12,1.132.143.147,1,TRUE,TRUE,Orange Mobile,Cisco 2600 router (IOS 11.3),94,0,Poland,54.241,18.8073,502,,,,,1
+13,1.132.153.61,1,TRUE,TRUE,Orange Mobile,Citrix NetScaler load balancer,94,0,Poland,52.435,17.07,502,,,,,1
+14,1.132.185.63,1,TRUE,TRUE,Orange Mobile,,,0,Poland,53.378,20.2731,502,,,,,1
+15,53.10.82.22,1,TRUE,TRUE,Korea Telecom,,,0,Republic of Korea,35.1928,128.0847,502,,,,,1
+16,49.235.120.92,1,TRUE,TRUE,"Telia Network services
+ISP",Linux 2.4.20,100,2,Sweden,58.2623,12.9541,502,,,,,1
+17,79.169.28.193,1,TRUE,TRUE,Aptum Technologies,Motorola AP-51xx WAP,90,3,Canada,59.6378,-133.5433,502,,,,,1
+18,95.169.84.45,1,TRUE,TRUE,Link Networks,Linux 2.4.20,100,3,Sweden,56.1667,15.5833,502,,,,,1
+19,94.65.223.15,1,TRUE,TRUE,"Multimedia Polska S. A.
+Cable Internet Voice Provider
+Node Gdynia",MOXA Ethernet-to-serial bridge,94,2,Poland,53.3366,15.0321,502,,,,,1
+20,94.65.223.202,1,TRUE,TRUE,"Multimedia Polska S. A.
+Cable Internet Voice Provider
+Node Gdynia",,,0,Poland,53.3366,15.0321,502,,,,,1
