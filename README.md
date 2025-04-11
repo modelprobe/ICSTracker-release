@@ -9,16 +9,16 @@ The directory structure of this repository is as follows:
 ```bash
 ICSTracker-Release/ 
 ├── code/ # Core code for signature generation and device identification 
-│ ├── device_identification/
+│ ├── device_identification/ # Core code
 │ └── environment.yml # Conda environment file 
 ├── datasets/ # Sample scanning traffic and corresponding label files for demonstration purposes
 │ ├── DS1
-│ │ └──{protocol}_{country}_{source}_round{i}.pcap
+│ │ └──{protocol}_{country}_{source}_round{i}.pcap # Sample PCAP file
 │ ├── DS2
 │ ├── DS3
 │ ├── DS4
 │ ├── DS5
-│ └── {protocol}_{source}_valid.csv 
+│ └── {protocol}_{source}_valid.csv # Sample label file
 ├── LICENSE
 └── README.md # This file
 ```
