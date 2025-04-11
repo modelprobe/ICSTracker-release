@@ -5,6 +5,8 @@
 This repository provides core code and sample data to support the reproduction of key components described in our paper.
 
 ## Repository Structure
+The directory structure of this repository is as follows:
+```bash
 ICSTracker-Release/ 
 ├── code/ # Core code for signature generation and device identification 
 │ ├── device_identification/
@@ -19,6 +21,7 @@ ICSTracker-Release/
 │ └── {protocol}_{source}_valid.csv 
 ├── LICENSE
 └── README.md # This file
+```
 
 ## Data and Code Access
 
