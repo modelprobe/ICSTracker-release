@@ -20,7 +20,7 @@ from device_identification.icstracker.semantic_identification.semantic_identific
 from device_identification.icstracker.config.config import *
 
 
-def load_data(protocol, stsm_type, model_file_name, country, test_file_suffix, excluded_operations, dataset, datasource):
+def load_data(protocol, stsm_type, model_file_name, region, test_file_suffix, excluded_operations, dataset, datasource):
     ip_list_file = None
     if protocol == "modbus":
         ip_list_file = os.path.join(root_path, "datasets", "modbus_scan_valid.csv")
@@ -31,7 +31,7 @@ def load_data(protocol, stsm_type, model_file_name, country, test_file_suffix, e
     all_file_packets = defaultdict(dict)
 
     for i in range(0, file_number):
-        file_path = f"datasets\\{dataset}\\{protocol}_{country}_{datasource}_round{start_file_index + i}.pcap"
+        file_path = f"datasets\\{dataset}\\{protocol}_{region}_{datasource}_round{start_file_index + i}.pcap"
         train_pcap_file = os.path.join(root_path, file_path)
         all_file_packets[f"file{i}"] = get_packets_inlist(train_pcap_file, ip_list_file)
 
@@ -147,12 +147,12 @@ root_path = "D:\\ICSTrackerTest"
 if __name__ == '__main__':
     protocol = "modbus"
     stsm_type = "state"
-    country = "au"
+    region = "regA"
     dataset = "DS2"
     datasource = "scan"
     current_time_millis = int(time.time() * 1000)
-    model_file_name = f"device_signatures_{stsm_type}_{protocol}_{country}_{datasource}(1-20)_align_{GLOBAL_TALI}_open_{current_time_millis}"
+    model_file_name = f"device_signatures_{stsm_type}_{protocol}_{region}_{datasource}(1-20)_align_{GLOBAL_TALI}_open_{current_time_millis}"
     test_file_suffix = ""
     print(f"model_file_name: {model_file_name}")
     excluded_operations = []
-    load_data(protocol, stsm_type, model_file_name, country, test_file_suffix, excluded_operations, dataset, datasource)
+    load_data(protocol, stsm_type, model_file_name, region, test_file_suffix, excluded_operations, dataset, datasource)

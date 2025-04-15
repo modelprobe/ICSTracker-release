@@ -87,7 +87,7 @@ def output_device_models(output_path, headers, str_device_models, file_name):
         writer.writerows(str_device_models)
 
 
-def train_file(protocol, stsm_type, model_file_name, country, excluded_operations, file_number, start_file_index, dataset, datasource):
+def train_file(protocol, stsm_type, model_file_name, region, excluded_operations, file_number, start_file_index, dataset, datasource):
     ip_list_file = None
     if protocol == "modbus":
         ip_list_file = os.path.join(root_path, "datasets", "modbus_scan_valid.csv")
@@ -95,7 +95,7 @@ def train_file(protocol, stsm_type, model_file_name, country, excluded_operation
         ip_list_file = os.path.join(root_path, "datasets", "s7_scan_valid.csv")
     train_all_packets = []
     for i in range(0, file_number):
-        file_path = f"datasets\\{dataset}\\{protocol}_{country}_{datasource}_round{start_file_index + i}.pcap"
+        file_path = f"datasets\\{dataset}\\{protocol}_{region}_{datasource}_round{start_file_index + i}.pcap"
         train_pcap_file = os.path.join(root_path, file_path)
         train_all_packets.extend(get_packets_inlist(train_pcap_file, ip_list_file))
 
@@ -226,7 +226,7 @@ root_path = "D:\\ICSTrackerTest"
 if __name__ == '__main__':
     protocol = "modbus"  # ICS protocol
     stsm_type = "state"  # The type of the identification system
-    country = "au"  # The origin of the dataset
+    region = "regA"  # The origin of the dataset
     file_number = 16  # The number of train PCAP files
     start_file_index = 1  # The index of the first training PCAP file
     dataset = "DS2"
@@ -236,7 +236,7 @@ if __name__ == '__main__':
     print(f"alignment_threshold = {GLOBAL_TALI}")
     print(f"operation_match_ratio >= {GLOBAL_OPERATION_MATCH}")
     print(f"packet_match_ratio >= {GLOBAL_PACKET_MATCH}")
-    model_file_name = f"device_signatures_{stsm_type}_{protocol}_{country}_{datasource}({start_file_index}-{start_file_index + file_number -1})_align_{GLOBAL_TALI}"
+    model_file_name = f"device_signatures_{stsm_type}_{protocol}_{region}_{datasource}({start_file_index}-{start_file_index + file_number -1})_align_{GLOBAL_TALI}"
 
     """ For the ablation experiment """
     # excluded_operations = [b'\x00\x01\x00\x00\x00\x05\x01+\x0e\x01\x00',
@@ -249,4 +249,4 @@ if __name__ == '__main__':
     #                        b'\x03\x00\x00!\x02\xf0\x802\x07\x00\x00\x00\x01\x00\x08\x00\x08\x00\x01\x12\x04\x11D\x01\x00\xff\t\x00\x04\x00\x13\x00\x00',
     #                        b'\x03\x00\x00!\x02\xf0\x802\x07\x00\x00\x00\x01\x00\x08\x00\x08\x00\x01\x12\x04\x11D\x01\x00\xff\t\x00\x04\x00\x14\x00\x00']  # for s7
     excluded_operations = []
-    train_file(protocol, stsm_type, model_file_name, country, excluded_operations, file_number, start_file_index, dataset, datasource)
+    train_file(protocol, stsm_type, model_file_name, region, excluded_operations, file_number, start_file_index, dataset, datasource)

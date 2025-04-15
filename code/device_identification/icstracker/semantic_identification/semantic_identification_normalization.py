@@ -170,7 +170,7 @@ def load_device_models(model_path, file_name, stsm_type):
     return device_models
 
 
-def predict_file(protocol, stsm_type, model_file_name, country, test_file_suffix, excluded_operations, dataset, datasource):
+def predict_file(protocol, stsm_type, model_file_name, region, test_file_suffix, excluded_operations, dataset, datasource):
     """
     Predict device models from pcap file, for the data source, our global scanning list
 
@@ -179,7 +179,7 @@ def predict_file(protocol, stsm_type, model_file_name, country, test_file_suffix
     protocol: ICS protocol
     stsm_type: the type of the identification system
     model_file_name: the file name of generated device signatures
-    country: the origin of the dataset
+    region: the origin of the dataset
     test_file_suffix: the suffix of test file name
     excluded_operations: the excluded operations
 
@@ -193,7 +193,7 @@ def predict_file(protocol, stsm_type, model_file_name, country, test_file_suffix
         ip_list_file = os.path.join(root_path, "datasets", "modbus_scan_valid.csv")
     elif protocol == "s7":
         ip_list_file = os.path.join(root_path, "datasets", "s7_scan_valid.csv")
-    test_pcap_file1 = os.path.join(root_path, f"datasets\\{dataset}\\{protocol}_{country}_{datasource}_{test_file_suffix}.pcap")
+    test_pcap_file1 = os.path.join(root_path, f"datasets\\{dataset}\\{protocol}_{region}_{datasource}_{test_file_suffix}.pcap")
     test_all_packets = []
     test_all_packets.extend(get_packets_inlist(test_pcap_file1, ip_list_file))
     test_filtered_packets = filter_retransmission(test_all_packets)
@@ -208,7 +208,7 @@ def predict_file(protocol, stsm_type, model_file_name, country, test_file_suffix
         predict_double(protocol, test_device_packets, stsm_type, model_file_name, test_file_suffix, excluded_operations)
 
 
-def predict_file_others(protocol, stsm_type, model_file_name, country, test_others_file_suffix, excluded_operations, isHoneypot, dataset, datasource):
+def predict_file_others(protocol, stsm_type, model_file_name, region, test_others_file_suffix, excluded_operations, isHoneypot, dataset, datasource):
     """
     Predict device models from pcap file, for the data sources, Shodan and honeypots
 
@@ -217,7 +217,7 @@ def predict_file_others(protocol, stsm_type, model_file_name, country, test_othe
     protocol: ICS protocol
     stsm_type: the type of the identification system
     model_file_name: the file name of generated device signatures
-    country: the origin of the dataset
+    region: the origin of the dataset
     test_file_suffix: the suffix of test file name
     excluded_operations: the excluded operations
     isHoneypot: whether for honeypot detection
@@ -753,7 +753,7 @@ root_path = "D:\\ICSTrackerTest"
 if __name__ == '__main__':
     protocol = "modbus"  # ICS protocol
     stsm_type = "state"  # The type of the identification system
-    country = "au"  # The origin of the dataset
+    region = "regA"  # The origin of the dataset
     file_number = 16  # The number of train PCAP files
     start_file_index = 1  # The index of the first training PCAP file
     dataset = "DS2"
@@ -764,7 +764,7 @@ if __name__ == '__main__':
     print(f"match_score_threshold = {GLOBAL_DM_Score}")
     print(f"operation_match_ratio >= {GLOBAL_OPERATION_MATCH}")
     print(f"packet_match_ratio >= {GLOBAL_PACKET_MATCH}")
-    model_file_name = f"device_signatures_{stsm_type}_{protocol}_{country}_{datasource}({start_file_index}-{start_file_index + file_number - 1})_align_{GLOBAL_TALI}"
+    model_file_name = f"device_signatures_{stsm_type}_{protocol}_{region}_{datasource}({start_file_index}-{start_file_index + file_number - 1})_align_{GLOBAL_TALI}"
 
     """ For the ablation experiment """
     # excluded_operations = [b'\x00\x01\x00\x00\x00\x05\x01+\x0e\x01\x00',
@@ -780,11 +780,11 @@ if __name__ == '__main__':
 
     """ For the data source, our global scanning list """
     test_file_suffix = "round18"
-    predict_file(protocol, stsm_type, model_file_name, country, test_file_suffix, excluded_operations, dataset, datasource)
+    predict_file(protocol, stsm_type, model_file_name, region, test_file_suffix, excluded_operations, dataset, datasource)
     evaluate(protocol, model_file_name, test_file_suffix)
 
     """ For the data sources, Shodan and honeypots """
     # isHoneypot = True
-    # test_others_file_suffix = f"Shodan_{protocol}_{country}_round10"
-    # predict_file_others(protocol, stsm_type, model_file_name, country, test_others_file_suffix, excluded_operations, isHoneypot, dataset, datasource)
+    # test_others_file_suffix = f"Shodan_{protocol}_{region}_round10"
+    # predict_file_others(protocol, stsm_type, model_file_name, region, test_others_file_suffix, excluded_operations, isHoneypot, dataset, datasource)
     # evaluate_others(protocol, model_file_name, test_others_file_suffix, isHoneypot)
