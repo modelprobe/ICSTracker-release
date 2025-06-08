@@ -35,7 +35,8 @@ This repository includes:
 - **Sample Datasets** for illustrative purposes.
 
 ### Important Notice
-The full datasets and complete implementation are available **upon request during the peer-review process**.
-The complete implementation of the identification method will be **publicly released after the paper is officially accepted**.
+
+Access to the full datasets remains available upon request, while the complete implementation of the identification method will be **publicly released following the official acceptance of the paper**.
+
 Please note that the source code for the ICS scanners used in this study is **not included due to potential security concerns**.
 
