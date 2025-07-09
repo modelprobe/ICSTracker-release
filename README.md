@@ -6,7 +6,7 @@ This repository includes the core implementation and sample data to support repr
 
 ## Ethics Statement
 
-This project conducts remote identification of ICS device models via active Internet scanning and network traffic fingerprinting. Recognizing the ethical implications of active probing, we adhere to the Menlo Report principles and RFC 9511 best practices. We carefully designed secure scanning procedures by analyzing real-world probe traffic collected from honeypots and validating request security through extensive local testbed trials. To minimize risks during global scanning, we limit probing frequency and volume, randomize target order, and provide clear opt-out mechanisms via our website and DNS records. While we openly share our identification method to support ICS defenders, we do not release scanning code to prevent potential misuse. All shared datasets are anonymized using a prefix-preserving algorithm and are available upon request for legitimate research purposes only.
+This project conducts remote identification of ICS device models via active Internet scanning and network traffic fingerprinting. Recognizing the ethical implications of active probing, we adhere to the Menlo Report principles and RFC 9511 best practices. We carefully designed secure scanning procedures by analyzing real-world probe traffic collected from honeypots and validating request security through extensive local testbed trials. To minimize risks during global scanning, we limit probing frequency and volume, randomize the target order, and support opt-out through a public explanation website, whose address is embedded in outbound HTTP and UDP packets. While we openly share our identification method to support ICS defenders, we do not release scanning code to prevent potential misuse. All shared datasets are anonymized using a prefix-preserving algorithm and are available upon request for legitimate research purposes only.
 
 
 ## Repository Structure
@@ -22,8 +22,7 @@ ICSTracker-Release/
 │ ├── DS2
 │ ├── DS3
 │ ├── DS4
-│ ├── DS5
-│ └── {protocol}_{source}_valid.csv # Sample label file
+│ └── DS5
 ├── LICENSE
 └── README.md # This file
 ```
