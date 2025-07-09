@@ -17,12 +17,12 @@ ICSTracker-Release/
 │ ├── device_identification/ # Core code
 │ └── environment.yml # Conda environment file 
 ├── datasets/ # Sample scanning traffic and corresponding label files for demonstration purposes
-│ ├── DS1
+│ ├── DS1/
 │ │ └──{protocol}_{region}_{source}_round{i}.pcap # Sample PCAP file
-│ ├── DS2
-│ ├── DS3
-│ ├── DS4
-│ └── DS5
+│ ├── DS2/
+│ ├── DS3/
+│ ├── DS4/
+│ └── DS5/
 ├── LICENSE
 └── README.md # This file
 ```
