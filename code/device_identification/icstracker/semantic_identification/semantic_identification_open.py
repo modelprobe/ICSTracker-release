@@ -26,6 +26,8 @@ def load_data(protocol, stsm_type, model_file_name, region, test_file_suffix, ex
         ip_list_file = os.path.join(root_path, "datasets", "modbus_scan_valid.csv")
     elif protocol == "s7":
         ip_list_file = os.path.join(root_path, "datasets", "s7_scan_valid.csv")
+    elif protocol == "enip":
+        ip_list_file = os.path.join(root_path, "datasets", "enip_scan_valid.csv")
     file_number = 20
     start_file_index = 1
     all_file_packets = defaultdict(dict)

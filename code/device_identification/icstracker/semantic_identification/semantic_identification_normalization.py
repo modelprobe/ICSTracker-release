@@ -193,6 +193,8 @@ def predict_file(protocol, stsm_type, model_file_name, region, test_file_suffix,
         ip_list_file = os.path.join(root_path, "datasets", "modbus_scan_valid.csv")
     elif protocol == "s7":
         ip_list_file = os.path.join(root_path, "datasets", "s7_scan_valid.csv")
+    elif protocol == "enip":
+        ip_list_file = os.path.join(root_path, "datasets", "enip_scan_valid.csv")
     test_pcap_file1 = os.path.join(root_path, f"datasets\\{dataset}\\{protocol}_{region}_{datasource}_{test_file_suffix}.pcap")
     test_all_packets = []
     test_all_packets.extend(get_packets_inlist(test_pcap_file1, ip_list_file))
@@ -237,6 +239,11 @@ def predict_file_others(protocol, stsm_type, model_file_name, region, test_other
             ip_list_file = os.path.join(root_path, "datasets", "s7_honeypot_valid.csv")
         else:
             ip_list_file = os.path.join(root_path, "datasets", "s7_shodan_valid.csv")
+    elif protocol == "enip":
+        if isHoneypot:
+            ip_list_file = os.path.join(root_path, "datasets", "enip_honeypot_valid.csv")
+        else:
+            ip_list_file = os.path.join(root_path, "datasets", "enip_shodan_valid.csv")
     test_pcap_file1 = os.path.join(root_path, f"datasets\\{dataset}\\{test_others_file_suffix}.pcap")
     test_all_packets = []
     test_all_packets.extend(get_packets_inlist(test_pcap_file1, ip_list_file))
@@ -620,6 +627,8 @@ def evaluate(protocol, model_file_name, test_file_suffix):
         ip_label_file = os.path.join(root_path, "datasets", "modbus_scan_valid.csv")
     elif protocol == "s7":
         ip_label_file = os.path.join(root_path, "datasets", "s7_scan_valid.csv")
+    elif protocol == "enip":
+        ip_label_file = os.path.join(root_path, "datasets", "enip_scan_valid.csv")
     device_predictions_file = os.path.join(root_path, f"icstracker_analysis\\{protocol}\\predictions_{model_file_name}_{test_file_suffix}.csv")
     ip_labels = get_ip_labels(ip_label_file)
     device_predictions = get_device_predictions(device_predictions_file)
@@ -711,6 +720,12 @@ def evaluate_others(protocol, model_file_name, test_file_suffix, isHoneypot):
             ip_label_test_file = os.path.join(root_path, "s7_honeypot_valid.csv")
         else:
             ip_label_test_file = os.path.join(root_path, "s7_shodan_valid.csv")
+    elif protocol == "enip":
+        ip_label_train_file = os.path.join(root_path, "enip_scan_valid.csv")
+        if isHoneypot:
+            ip_label_test_file = os.path.join(root_path, "enip_honeypot_valid.csv")
+        else:
+            ip_label_test_file = os.path.join(root_path, "enip_shodan_valid.csv")
     device_predictions_file = os.path.join(root_path, f"icstracker_analysis\\{protocol}\\predictions_{model_file_name}_{test_file_suffix}.csv")
     ip_labels_train = get_ip_labels(ip_label_train_file)
     ip_labels_test = get_ip_labels(ip_label_test_file)
@@ -776,6 +791,11 @@ if __name__ == '__main__':
     #                        b'\x03\x00\x00!\x02\xf0\x802\x07\x00\x00\x00\x01\x00\x08\x00\x08\x00\x01\x12\x04\x11D\x01\x00\xff\t\x00\x04\x00\x12\x00\x00',
     #                        b'\x03\x00\x00!\x02\xf0\x802\x07\x00\x00\x00\x01\x00\x08\x00\x08\x00\x01\x12\x04\x11D\x01\x00\xff\t\x00\x04\x00\x13\x00\x00',
     #                        b'\x03\x00\x00!\x02\xf0\x802\x07\x00\x00\x00\x01\x00\x08\x00\x08\x00\x01\x12\x04\x11D\x01\x00\xff\t\x00\x04\x00\x14\x00\x00']  # for s7
+    # excluded_operations = [
+    #     b'c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
+    #     b'd\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
+    #     b'\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00',
+    #     b'o\x00\x16\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x00\xb2\x00\x06\x00\x01\x02 d$\x01']  # for ENIP
     excluded_operations = []
 
     """ For the data source, our global scanning list """
