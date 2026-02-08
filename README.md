@@ -1,14 +1,12 @@
 # ICSTracker-Release
 
-**ICSTracker** aims to investigate the potential risks of model leakage in Industrial Control System (ICS) devices that are exposed on the Internet. By combining active Internet scanning with network traffic fingerprinting, this project remotely identifies ICS device models to support defenders in assessing their network assets.
-
-This repository includes the core implementation and sample data to support reproduction of key components described in our paper. Access to the full dataset is available upon request and requires submitting relevant information to verify a legitimate research purpose, in order to prevent misuse.
+**ICSTracker** is a network-traffic-based framework for Internet-scale ICS device model attribution under incomplete observability. It combines protocol-compliant Internet probing with cross-round evidence aggregation to extract stable model-level interaction evidence, and performs robust single-round attribution under missing and extra packets. The system supports defense-oriented tasks such as asset inventory validation, exposure measurement, and responsible notification.
 
 ## Ethics Statement
 
 This project conducts remote identification of ICS device models via active Internet scanning and network traffic fingerprinting. Recognizing the ethical implications of active probing, we adhere to the Menlo Report principles and RFC 9511 best practices. We carefully designed secure scanning procedures by analyzing real-world probe traffic collected from honeypots and validating request security through extensive local testbed trials. To minimize risks during global scanning, we limit probing frequency and volume, randomize the target order, and support opt-out through a public explanation website, whose address is embedded in outbound HTTP and UDP packets. While we openly share our identification method to support ICS defenders, we do not release scanning code to prevent potential misuse. All shared datasets are anonymized using a prefix-preserving algorithm and are available upon request for legitimate research purposes only.
 
-
+ 
 ## Repository Structure
 The directory structure of this repository is as follows:
 ```bash
@@ -29,9 +27,8 @@ ICSTracker-Release/
 
 ## Data and Code Access
 
-This repository includes:
-- **Core Code** for device fingerprinting and matching.
-- **Sample Datasets** for illustrative purposes.
+This repository provides the core attribution pipeline (feature extraction, signature construction, and inference) and evaluation scripts to reproduce key results reported in the paper.
+For misuse-risk mitigation, we do not publicly release Internet-facing scanner code; instead we document the probing procedure (operation set, schedule, rate limits, and safeguards) to enable scientific assessment.
 
 ### Important Notice
 
