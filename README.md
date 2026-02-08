@@ -16,7 +16,7 @@ ICSTracker-Release/
 ├── code/ # Core code for signature generation and device identification 
 │ ├── device_identification/ # Core code
 │ └── environment.yml # Conda environment file 
-├── datasets/ # Sample scanning traffic and corresponding label files for demonstration purposes
+├── datasets/ # Sample scanning traffic
 │ ├── DS1/
 │ │ └──{protocol}_{region}_{source}_round{i}.pcap # Sample PCAP file
 │ ├── DS2/
